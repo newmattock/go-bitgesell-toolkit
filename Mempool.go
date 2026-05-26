@@ -5,13 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"time"
 )
-
-// SDKConfig represents the configuration for the SDK
-type SDKConfig struct {
-	BaseAPIURL string // Add any other fields as needed
-}
 
 // Mempool represents the mempool SDK
 type Mempool struct {

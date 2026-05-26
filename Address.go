@@ -26,8 +26,11 @@ func (a *Address) GetAddressBalance(address string) (*AddressBalance, error) {
 	if err != nil {
 		return nil, err
 	}
-	// Parse the data into AddressBalance struct if needed
-	return &AddressBalance{}, nil
+	var balance AddressBalance
+	if err := json.Unmarshal(data, &balance); err != nil {
+		return nil, err
+	}
+	return &balance, nil
 }
 
 func (a *Address) GetAddressTransactions(address string) (*AddressTransactions, error) {
@@ -36,8 +39,11 @@ func (a *Address) GetAddressTransactions(address string) (*AddressTransactions, 
 	if err != nil {
 		return nil, err
 	}
-	// Parse the data into AddressTransactions struct if needed
-	return &AddressTransactions{}, nil
+	var transactions AddressTransactions
+	if err := json.Unmarshal(data, &transactions); err != nil {
+		return nil, err
+	}
+	return &transactions, nil
 }
 
 func (a *Address) GetUnconfirmedAddressTransactions(address string) (*AddressTransactions, error) {
@@ -46,8 +52,11 @@ func (a *Address) GetUnconfirmedAddressTransactions(address string) (*AddressTra
 	if err != nil {
 		return nil, err
 	}
-	// Parse the data into AddressTransactions struct if needed
-	return &AddressTransactions{}, nil
+	var transactions AddressTransactions
+	if err := json.Unmarshal(data, &transactions); err != nil {
+		return nil, err
+	}
+	return &transactions, nil
 }
 
 func (a *Address) GetAddressUTXO(address string) (*AddressUTXOs, error) {
@@ -56,11 +65,14 @@ func (a *Address) GetAddressUTXO(address string) (*AddressUTXOs, error) {
 	if err != nil {
 		return nil, err
 	}
-	// Parse the data into AddressUTXOs struct if needed
-	return &AddressUTXOs{}, nil
+	var utxos AddressUTXOs
+	if err := json.Unmarshal(data, &utxos); err != nil {
+		return nil, err
+	}
+	return &utxos, nil
 }
 
-func (a *Address) get(url string) (interface{}, error) {
+func (a *Address) get(url string) ([]byte, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		a.logger(err.Error())
@@ -74,11 +86,5 @@ func (a *Address) get(url string) (interface{}, error) {
 		return nil, err
 	}
 
-	var data interface{}
-	if err := json.Unmarshal(body, &data); err != nil {
-		a.logger(err.Error())
-		return nil, err
-	}
-
-	return data, nil
+	return body, nil
 }

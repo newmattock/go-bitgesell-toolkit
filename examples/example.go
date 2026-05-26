@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/naftalimurgor/go-bitgesell-toolkit"
+
+	blockchain "github.com/BitgesellOfficial/go-bitgesell-toolkit"
 )
 
 func main() {
 	// Example usage of the Bitgesell Blockchain SDK
-	config := blockchain.SDKConfig.SDKConfig{BaseAPIURL: "https://api.bitaps.com/bgl/v1/blockchain"}
-	bitgesellSDK := blockchain.bitgesell.NewBitgesellBlockchainSDK(config)
+	config := blockchain.SDKConfig{BaseAPIURL: "https://api.bitaps.com/bgl/v1/blockchain"}
+	bitgesellSDK := blockchain.NewBitgesellBlockchainSDK(config)
 
 	// Example: Access Blockchain SDK methods
 	block, err := bitgesellSDK.Blockchain.GetBlockByHash("your_block_hash")

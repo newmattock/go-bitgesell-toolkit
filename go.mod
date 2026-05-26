@@ -1,4 +1,4 @@
-module github.com/naftalimurgor/go-bitgesell-toolkit
+module github.com/BitgesellOfficial/go-bitgesell-toolkit
 
 go 1.21.6
 

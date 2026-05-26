@@ -1,9 +1,5 @@
 package blockchain
 
-import (
-	"fmt"
-)
-
 // BitgesellBlockchainSDK represents the Bitgesell Blockchain SDK
 type BitgesellBlockchainSDK struct {
 	Blockchain Blockchain
