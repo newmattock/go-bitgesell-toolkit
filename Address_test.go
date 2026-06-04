@@ -61,7 +61,7 @@ func TestGetUnconfirmedAddressTransactions(t *testing.T) {
 }
 
 func TestGetAddressUTXO(t *testing.T) {
-	mockServer := createMockServer("address/unconfirmed/transactions/mockAddress", `[{"txId": "utxo", "vOut": 1}]`)
+	mockServer := createMockServer("address/utxo/mockAddress", `[{"txId": "utxo", "vOut": 1}]`)
 	defer mockServer.Close()
 
 	config := SDKConfig{

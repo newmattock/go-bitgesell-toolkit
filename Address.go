@@ -60,7 +60,7 @@ func (a *Address) GetUnconfirmedAddressTransactions(address string) (*AddressTra
 }
 
 func (a *Address) GetAddressUTXO(address string) (*AddressUTXOs, error) {
-	url := fmt.Sprintf("%s/address/unconfirmed/transactions/%s", a.apiV1URL, address)
+	url := fmt.Sprintf("%s/address/utxo/%s", a.apiV1URL, address)
 	data, err := a.get(url)
 	if err != nil {
 		return nil, err
